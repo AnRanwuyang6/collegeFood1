@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- Make sure the path to CKEditor is correct. -->
+        <script src="ckeditor.js"></script>
+    </head>
+    <body>
+        <form>
+            <textarea name="editor1" rows="10" cols="80">
+                This is my test demo!
+            </textarea>
+            <script>
+                CKEDITOR.replace( 'editor1',{
+					customConfig: 'baseconfig.js'//
+				});
+            </script>
+        </form>
+    </body>
+</html>

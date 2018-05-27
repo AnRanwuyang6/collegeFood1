@@ -26,7 +26,7 @@
         <sqlMapGenerator targetPackage="${targetXMLPackage}"  targetProject="${targetResourcesProject}"/>
         <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER" />
 
-         <table tableName="t_test" domainObjectName="AppTest" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
+         <table tableName="t_forum_topic" domainObjectName="ForumTopic" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
 
     </context>
 </generatorConfiguration>

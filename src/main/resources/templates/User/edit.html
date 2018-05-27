@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="edit">
+    <!-- add modal -->
+    <div class="ui modal" id="editModal" style="margin-top: -400px;width: 400px;height: 500px">
+        <i class="close icon"></i>
+        <div class="header">
+            修改用户
+        </div>
+        <form class="ui warning form" style="margin:5% 10% 5% 10%" id="editUserForm">
+            <input type="text" name="id" id="idEdit">
+            <div class="field">
+                    <label style="font-size: small">电话</label>
+                    <input placeholder="电话" type="text" name="phone" id="edit_phone"></div>
+            <div>
+               <span class="btn green fileinput-button">
+               <i class="fa fa-plus"></i>
+               <span> 修改图像 </span>
+               <input id="fileuploadEdit" type="file" name="file"></span>
+                <div class="ui indicating progress" id="processEdit">
+                    <div class="bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="required field">
+                <label>头像路径</label>
+                <input placeholder="文件路径" type="text" name="image" id="edit_image" readonly>
+            </div>
+            <div class="field">
+                <label style="font-size: small">昵称</label>
+                <input placeholder="昵称" type="text" name="str2" id="edit_str2">
+            </div>
+            <div class="field">
+                <label style="font-size: small">邮箱</label>
+                <input placeholder="邮箱" type="text" name="email" id="edit_email">
+            </div>
+        </form>
+        <div class="actions">
+            <div class="ui primary button" id="editSubmit">提交</div>
+            <div class="ui button" id="editCancel">取消</div>
+        </div>
+    </div>
+</div>
+
+
+

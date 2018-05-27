@@ -1,0 +1,881 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<body>
+
+<div th:fragment="leftheader">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar-wrapper">
+        <!-- BEGIN SIDEBAR -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <div class="page-sidebar navbar-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+            <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+            <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+            <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+            <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+            <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true"
+                data-slide-speed="200" style="padding-top: 20px;">
+                <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+                <li class="sidebar-toggler-wrapper hide">
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                    <div class="sidebar-toggler"></div>
+                    <!-- END SIDEBAR TOGGLER BUTTON -->
+                </li>
+                <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+                <li class="sidebar-search-wrapper">
+                    <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                    <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+                    <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+                    <!--  -->
+                    <form class="sidebar-search  " action="page_general_search_3.html" method="POST">
+
+                        <a href="javascript:;" class="remove">
+                            <i class="icon-close"></i>
+                        </a>
+                        <!--<div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                        <a href="javascript:;" class="btn submit">
+                                            <i class="icon-magnifier"></i>
+                                        </a>
+                                    </span>
+                        </div>-->
+                    </form>
+                    <!-- END RESPONSIVE QUICK SEARCH FORM -->
+                </li>
+
+                <!-- BEGIN L-->
+
+                <!--<li class="nav-item start imp_00" sec:authorize="hasRole('ROLE_IMP')">-->
+                    <!--<a href="javascript:location.href='https://imp.cri.cn/account/personinfo#/';" class="nav-link nav-toggle">-->
+                        <!--<i class="fa fa-user"></i>-->
+                        <!--<span class="title">内容管理</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item start img_00" sec:authorize="hasRole('ROLE_IMG')">
+                    <a href="javascript:location.href='http://imppic.crionline.cn/pic';" class="nav-link nav-toggle">
+                        <i class="fa fa-user"></i>
+                        <span class="title">图库管理</span>
+                    </a>
+                </li>-->
+                <!--<li class="nav-item start task_00" sec:authorize="hasRole('ROLE_TASK')">-->
+                    <!--<a href="javascript:alert('task');;" class="nav-link nav-toggle">-->
+                        <!--<i class="fa fa-user"></i>-->
+                        <!--<span class="title">任务管理</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+
+                <!--<li class="nav-item start user_00" sec:authorize="hasRole('ROLE_USER_CENTER')">-->
+                    <!--<a href="javascript:;" class="nav-link nav-toggle">-->
+                        <!--<i class="fa fa-user"></i>-->
+                        <!--<span class="title">用户中心</span>-->
+                        <!--<span class="arrow open"></span>-->
+                    <!--</a>-->
+                    <!--<ul class="sub-menu">-->
+                        <!--<li class="nav-item start user_01" sec:authorize="hasRole('ROLE_USER_CENTER_REG_USER_MANAGE')">-->
+                            <!--<a href="javascript:;" class="nav-link">-->
+                                <!--<i class="fa fa-chevron-right"></i>-->
+                                <!--<span class="title">注册用户管理</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+
+                        <!--<li class="nav-item start user_02" sec:authorize="hasRole('ROLE_USER_CENTER_DELETE_USER')">-->
+                            <!--<a href="javascript:;" class="nav-link">-->
+                                <!--<i class="fa fa-chevron-right"></i>-->
+                                <!--<span class="title">删除用户</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+
+                <li class="nav-item start comment_00" sec:authorize="hasRole('ROLE_REVIEW_CENTER')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-comment"></i>
+                        <span class="title">评论中心</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start comment_01" sec:authorize="hasRole('ROLE_REVIEW_CENTER_REVIEW_MANAGE')">
+                            <a th:href="@{/comment/index}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">评论审核</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start comment_02" sec:authorize="hasRole('ROLE_REVIEW_CENTER_PARAMETER_MANAGE')">
+                            <a th:href="@{/params/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">审核设置</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start comment_03" sec:authorize="hasRole('ROLE_REVIEW_CENTER_REVIEW_MONITOR')">
+                            <a href="javascript:;" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">评论监控</span>
+                            </a>
+                        </li>
+                        <!--<li class="nav-item start comment_04" sec:authorize="hasRole('ROLE_REVIEW_CENTER_WORD_MANAGE')">-->
+                            <!--<a href="javascript:;" class="nav-link">-->
+                                <!--<i class="fa fa-chevron-right"></i>-->
+                                <!--<span class="title">敏感词管理</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                    </ul>
+                </li>
+
+                <li class="nav-item start operate_00" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-th-list"></i>
+                        <span class="title">运营管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start operate_01" sec:authorize="hasRole('ROLE_OPERATION_MANAGE_MENU_MANAGE')">
+                            <a th:href="@{/menu/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">菜单管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start operate_02" sec:authorize="hasRole('ROLE_OPERATION_MANAGE_LANG_MANAGE')">
+                            <a th:href="@{/language/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">语言管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start create_00" sec:authorize="hasRole('ROLE_APPLICATION_CREATE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-th-list"></i>
+                        <span class="title">应用创建</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start create_01" sec:authorize="hasRole('ROLE_APPLICATION_CREATE_FAST')">
+                            <a th:href="@{/application/index}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">快速建站</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start newsSys_00" sec:authorize="hasRole('ROLE_MESSAGE_MANAGE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="title">消息系统</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start newsSys_01" sec:authorize="hasRole('ROLE_MESSAGE_MANAGE_ANNOUNCE_MANAGE')">
+                            <a th:href="@{/announcement/index}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">APP公告管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start newsSys_02" sec:authorize="hasRole('ROLE_MESSAGE_MANAGE_PUSH')">
+                            <a th:href="@{/pushaction}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">消息推送</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start newsSys_03" sec:authorize="hasRole('ROLE_MESSAGE_MANAGE_SYS')">
+                            <a th:href="@{/systemAnnouncement/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">系统公告管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start sysConfig_00" sec:authorize="hasRole('ROLE_SYSTEM_SETUP')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-cogs"></i>
+                        <span class="title">系统配置</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+
+                        <li class="nav-item start sysConfig_02" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_API_MSG')">
+                            <a th:href="@{/tip/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">后台接口提示语</span>
+                            </a>
+                        </li>
+                        <!--<li class="nav-item start sysConfig_03" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_ABOUT')">-->
+                        <!--<li class="nav-item start sysConfig_01">-->
+                            <!--<a href="javascript:;" class="nav-link">-->
+                                <!--<i class="fa fa-chevron-right"></i>-->
+                                <!--<span class="title">定时任务</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <li class="nav-item start sysConfig_05" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_LO')">
+                            <a th:href="@{/laos/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">老挝语部</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start sysConfig_06" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_ABOUT_INTERNATIONAL_CHANNEL')">
+                            <a th:href="@{/interPlatform/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">关于国际台</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start sysUser_00" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-sitemap"></i>
+                        <span class="title">账号及权限管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start sysUser_01" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_SYS_MANAGE')">
+
+                            <a href="javascript:;" class="nav-link nav-toggle " >
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">系统用户管理</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start sysUser01_list" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_SYS_MANAGE_QUERY_USER')">
+                                    <a th:href="@{/admin/sysList}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">查询用户</span>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item start sysUser01_add" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_SYS_MANAGE_ADD_USER')">
+                                    <a th:href="@{/admin/sysAdd}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">新增用户</span>
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="nav-item start sysUser_02" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_COM_MANAGE')">
+                            <a href="javascript:;" class="nav-link nav-toggle ">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">公司用户管理</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start sysUser02_list" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_COM_MANAGE_QUERY_USER')">
+                                    <a th:href="@{/admin/comList}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">用户查询</span>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item start sysUser02_add" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_COM_MANAGE_ADD_USER')">
+                                    <a th:href="@{/admin/comAdd}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">新增用户</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item start sysUser_03" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_SUB_MANAGE')">
+
+                            <a href="javascript:;" class="nav-link nav-toggle" >
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">公司子账号管理</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start sysUser03_list" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_SUB_MANAGE_QUERY_USER')">
+                                    <a th:href="@{/admin/subList}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">用户查询</span>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item start sysUser03_add" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_SUB_MANAGE_ADD_USER')">
+                                    <a th:href="@{/admin/subAdd}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">新增用户</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item start sysUser_04" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_ROLE_RELATIONSHIP')" style="display: none;">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">角色分类配置</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start sysUser04_listRole" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_RELATIONSHIP_ROLE_QUERY')">
+                                    <a th:href="@{/admin/listRole}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">角色查询</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start sysUser04_listPermission" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_RELATIONSHIP_PERMISSION_QUERY')">
+                                    <a th:href="@{/admin/listPermission}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">权限查询</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start sysUser04_addPermission" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_ROLE_RELATIONSHIP_ADD_PERMISSION')">
+                                    <a th:href="@{/admin/toAddPermission}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">添加权限</span>
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!--<kong>-->
+
+                        <li class="nav-item start sysUser_05" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_COM')">
+                            <a href="javascript:;" class="nav-link nav-toggle ">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">公司管理</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start sysUser05_list" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_COM_QUERY')">
+                                    <a th:href="@{/admin/complist}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">公司查询</span>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item start sysUser05_add" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_COM_ADD')">
+                                    <a th:href="@{/admin/compadd}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">新增公司</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item start sysUser_06" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_DEPT')">
+                            <a href="javascript:;" class="nav-link nav-toggle ">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">公司部门管理</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start sysUser06_list" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_DEPT_QUERY')">
+                                    <a th:href="@{/admin/deplist}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">部门查询</span>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item start sysUser06_add" sec:authorize="hasRole('ROLE_ACCOUNT_MANAGE_DEPT_ADD')">
+                                    <a th:href="@{/admin/depadd}" class="nav-link ">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">新增部门</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!--</kong>-->
+
+                    </ul>
+                </li>
+
+                <li class="nav-item start log_00" sec:authorize="hasRole('ROLE_LOG_SERVICE')">
+                    <a href="javascript:;" class="nav-link nav-toggle" >
+                        <i class="fa fa-file-text"></i>
+                        <span class="title">日志服务</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start log_01" sec:authorize="hasRole('ROLE_LOG_SERVICE_LOG')">
+                            <a th:href="@{/log/list}"class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">日志</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start ad_00" sec:authorize="hasRole('ROLE_AD_SYSTEM')">
+                    <a href="javascript:;" class="nav-link nav-toggle" >
+                        <i class="fa fa-trello"></i>
+                        <span class="title">广告系统</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start ad_01" sec:authorize="hasRole('ROLE_AD_SYSTEM_LAUNCH_MANAGE')">
+                            <a th:href="@{/cover/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">投放管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!--<li class="nav-item" sec:authorize="hasRole('ROLE_CLICK_RANK')">-->
+                    <!--<a href="javascript:;" class="nav-link nav-toggle">-->
+                        <!--<i class="fa fa-sort-amount-asc"></i>-->
+                        <!--<span class="title">点击排行</span>-->
+                        <!--<span class="arrow open"></span>-->
+                    <!--</a>-->
+                <!--</li>-->
+
+  <!--              <li class="nav-item start live_00" sec:authorize="hasRole('ROLE_VIDEO_LIVE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-play"></i>
+                        <span class="title">直播管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start live-01" sec:authorize="hasRole('ROLE_VIDEO_LIVE_LIVE_MANAGE')">
+                            <a th:href="@{/liveManager/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">音频直播</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start count_05" sec:authorize="hasRole('ROLE_STAT_MANAGE_RECORD')">
+                            <a th:href="@{/specialArea/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">录播管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start feedback_00" sec:authorize="hasRole('ROLE_FEEDBACK')">
+                    <a href="javascript:;" class="nav-link nav-toggle" >
+                        <i class="fa fa-tasks"></i>
+                        <span class="title">意见反聩</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start feedback_01" sec:authorize="hasRole('ROLE_FEEDBACK_FEEDBACK_MANAGE')">
+                            <a  th:href="@{/feedback/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">反馈管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start count_00" sec:authorize="hasRole('ROLE_STAT_MANAGE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span class="title">统计管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start count_01" sec:authorize="hasRole('ROLE_STAT_MANAGE_LIVE_VIDEO_STAT')">
+                            <a th:href="@{/applive/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">直播视频统计</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start count_02" sec:authorize="hasRole('ROLE_STAT_MANAGE_USER_ONLINE_STAT')">
+                            <a th:href="@{/countuser}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">用户在线统计</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start count_03" sec:authorize="hasRole('ROLE_STAT_MANAGE_LIKE_STAT')">
+                            <a th:href="@{/praise/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">点赞统计</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start count_04" sec:authorize="hasRole('ROLE_STAT_MANAGE_TOPIC_BROWSE')">
+                            <a th:href="@{/article/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">专题浏览</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start count_06" sec:authorize="hasRole('ROLE_STAT_MANAGE_RECORD')">
+                            <a th:href="@{/collection/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">收藏统计</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start count_07" sec:authorize="hasRole('ROLE_STAT_MANAGE_RECORD')">
+                            <a th:href="@{/shareDetail/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">分享统计</span>
+                            </a>
+                        </li>
+                        &lt;!&ndash;<li class="nav-item start count_08" sec:authorize="hasRole('ROLE_STAT_MANAGE_LIVE_VIDEO_STAT')">&ndash;&gt;
+                            &lt;!&ndash;<a th:href="@{/applive/newshtml}" class="nav-link">&ndash;&gt;
+                                &lt;!&ndash;<i class="fa fa-chevron-right"></i>&ndash;&gt;
+                                &lt;!&ndash;<span class="title">新闻视频统计</span>&ndash;&gt;
+                            &lt;!&ndash;</a>&ndash;&gt;
+                        &lt;!&ndash;</li>&ndash;&gt;
+                    </ul>
+                </li>
+
+                <li class="nav-item start vote_00" sec:authorize="hasRole('ROLE_VOTE_SYSTEM')">
+                    &lt;!&ndash;sec:authorize="hasRole('ROLE_VOTE_SYSTEM')"&ndash;&gt;
+                    &lt;!&ndash;sec:authorize="hasRole('ROLE_VOTE_SYSTEM_MANAGE')"&ndash;&gt;
+                    &lt;!&ndash;sec:authorize="hasRole('ROLE_VOTE_SYSTEM_ADD')"&ndash;&gt;
+                    <a href="javascript:;" class="nav-link nav-toggle" >
+                        <i class="fa fa-hand-o-up"></i>
+                        <span class="title">投票管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start vote_01" sec:authorize="hasRole('ROLE_VOTE_SYSTEM_MANAGE')">
+                            <a th:href="@{/vote/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">投票管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start vote_02" sec:authorize="hasRole('ROLE_VOTE_SYSTEM_ADD')">
+                            <a th:href="@{/vote/add}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">新增投票</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item start member_00" sec:authorize="hasRole('ROLE_DOG_MANAGE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-phone"></i>
+                        <span class="title">人员管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start member_01" sec:authorize="hasRole('ROLE_DOG_MANAGE_DJ')">
+                            <a th:href="@{/laosMember/hostIndex}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">主持人管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start member_02" sec:authorize="hasRole('ROLE_DOG_MANAGE_OTHERS')">
+                            <a th:href="@{/laosMember/memberIndex}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">其他成员管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start subscribe_00" sec:authorize="hasRole('ROLE_SUBSCRIBE_MANAGE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-phone"></i>
+                        <span class="title">订阅管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start subscribe_02" sec:authorize="hasRole('ROLE_SUBSCRIBE_MANAGE_THEME')">
+                            <a th:href="@{/topic/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">主题管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start subscribe_01" sec:authorize="hasRole('ROLE_SUBSCRIBE_MANAGE_CATEGORY')">
+                            <a th:href="@{/classify/toindex}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">分类管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start subscribe_03" sec:authorize="hasRole('ROLE_SUBSCRIBE_MANAGE_REVIEW')">
+                            <a th:href="@{/examine/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">审核主题</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start subscribe_04" sec:authorize="hasRole('ROLE_SUBSCRIBE_MANAGE_SOURCE')">
+                            <a th:href="@{/resource/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">来源管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start subscribe_05" >
+                            <a th:href="@{/subscribe/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">新闻页管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start subscribe_06" >
+                            <a th:href="@{/recommed/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">相关推荐</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start theme_00" sec:authorize="hasRole('ROLE_SKIN_MANAGE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-phone"></i>
+                        <span class="title">皮肤管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start theme_01" sec:authorize="hasRole('ROLE_SKIN_MANAGE_SETUP')">
+                            <a th:href="@{/theme/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">皮肤设置</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                &lt;!&ndash; 编译平台 &ndash;&gt;
+                <li class="nav-item start edit_00" sec:authorize="hasRole('ROLE_APPLICATION_EDIT')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-th-list"></i>
+                        <span class="title">编译平台</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start edit_01" sec:authorize="hasRole('ROLE_APPLICATION_EDIT_EDITOR')">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="fa fa fa-user"></i>
+                                <span class="title">撰稿人</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start edit_01_01">
+                                    <a th:href="@{/writer/index}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">我的稿件</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start edit_01_02">
+                                    <a th:href="@{/personal/setting}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">个人设置</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start edit_01_03">
+                                    <a th:href="@{/security/setting}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">安全设置</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item start edit_02" sec:authorize="hasRole('ROLE_APPLICATION_EDIT_ONE')">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="fa fa fa-user"></i>
+                                <span class="title">一审编辑</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start edit_02_01">
+                                    <a th:href="@{/firstInstance/writerHtml}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">撰稿人信息列表</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start edit_02_02">
+                                    <a th:href="@{/firstInstance/myHtml}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">我的稿件</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start edit_02_03">
+                                    <a th:href="@{/firstInstance/ExamineHtml}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">审核列表</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start edit_02_04">
+                                    <a th:href="@{/security/settingOne}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">安全设置</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item start edit_03" sec:authorize="hasRole('ROLE_APPLICATION_EDIT_TWO')">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="fa fa fa-user"></i>
+                                <span class="title">二审主编</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start edit_03_01">
+                                    <a th:href="@{/secondInstance/toManuHtml}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">我的稿件</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start edit_03_02">
+                                    <a th:href="@{/secondInstance/toExamineHtml}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">审核列表</span>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item start edit_03_03">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">人员管理</span>
+                                        <span class="arrow open"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start edit_03_03_01">
+                                            <a th:href="@{/secondInstance/toWriterHtml}" class="nav-link">
+                                                <i class="fa fa-chevron-right"></i>
+                                                <span class="title">撰稿人列表</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item start edit_03_03_02">
+                                            <a th:href="@{/secondInstance/toEmployeeHtml}" class="nav-link">
+                                                <i class="fa fa-chevron-right"></i>
+                                                <span class="title">职员列表</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item start edit_03_04">
+                                    <a th:href="@{/security/settingTwo}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">安全设置</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item start edit_04" sec:authorize="hasRole('ROLE_APPLICATION_EDIT_FINAL')">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="fa fa fa-user"></i>
+                                <span class="title">终审</span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start edit_04_01">
+                                    <a th:href="@{/lastInstance/index}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">审核列表</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start edit_04_02">
+                                    <a th:href="@{/security/settingFinal}" class="nav-link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <span class="title">安全设置</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start personalCenter_00" >
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span class="title">个人中心管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start personalCenter_01" >
+                            <a th:href="@{/center/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">个人中心</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start personalCenter_02" >
+                            <a th:href="@{/mail/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">APP消息推送管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start personalCenter_03" >
+                            <a th:href="@{/userIntegration/frame}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">积分成长值管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start personalCenter_04" >
+                            <a th:href="@{/task/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">任务中心管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start toupiao_00" >
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span class="title">投票节目管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start toupiao_01" >
+                            <a th:href="@{/voteProgram/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">节目管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item start position_00" >
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span class="title">招聘网站</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start position_01" >
+                            <a th:href="@{/position/list}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">职位类别管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start position_02" >
+                            <a th:href="@{/product/index}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">上传产品信息</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start position_03" >
+                            <a th:href="@{/enterpriseEdit/index}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">上传企业文化</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start position_04">
+                            <a th:href="@{/position/index}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">加入我们</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>-->
+
+                <li class="nav-item start aboutMe_00" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_ABOUT')">
+                    <a th:href="@{/aboutUs/index}" class="nav-link nav-toggle">
+                        <i class="fa fa-phone"></i>
+                        <span class="title">关于我们</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <!--<ul class="sub-menu">-->
+                        <!--<li class="nav-item start aboutMe_01" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_ABOUT_US')">-->
+                            <!--<a th:href="@{/aboutUs/index}" class="nav-link">-->
+                                <!--<i class="fa fa-chevron-right"></i>-->
+                                <!--<span class="title">那些你必须知道的事儿</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                </li>
+                <!-- END -->
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

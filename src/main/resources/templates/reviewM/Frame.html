@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="common/common">
+
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<div th:include="common/topheader :: topheader" class="hiddenTv"></div>
+<div class="clearfix"></div>
+<div class="page-container">
+    <!-- LEFT HEADER -->
+    <div th:include="common/leftheader :: leftheader" class="hiddenTv"></div>
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div th:include="common/helpcontrol :: helpcontrol" class="hiddenTv"></div>
+
+            <!-- PAGE CONTENT -->
+            <div th:include="reviewM/list :: content"></div>
+        </div>
+        <!-- FOOTER -->
+        <div th:include="common/footer" :: footer></div>
+    </div>
+</div>
+<!--<script type="text/javascript">
+
+    $(function () {
+        $('.content_00').attr("class", "nav-item start active open");
+
+        $('.content_08').attr("class", "nav-item start active open");
+
+//        for (var i = 0; i < menu.length; i++) {
+//
+//            menu.eq(i).click(function () {
+//                // menu.attr("class", "nav-item start");
+//
+
+    })
+</script>-->
+</body>
+</html>

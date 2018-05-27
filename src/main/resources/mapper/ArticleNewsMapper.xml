@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.college.food.dao.mybatis.ArticleNewsMapper">
+  <resultMap id="BaseResultMap" type="com.college.food.entity.ArticleNews">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="t_article_title" jdbcType="VARCHAR" property="tArticleTitle" />
+    <result column="t_article_keywords" jdbcType="VARCHAR" property="tArticleKeywords" />
+    <result column="t_article_flag" jdbcType="VARCHAR" property="tArticleFlag" />
+    <result column="t_article_type" jdbcType="VARCHAR" property="tArticleType" />
+    <result column="t_announcement_type" jdbcType="VARCHAR" property="tAnnouncementType" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="crate_time" jdbcType="TIMESTAMP" property="crateTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="str1" jdbcType="VARCHAR" property="str1" />
+    <result column="str2" jdbcType="VARCHAR" property="str2" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.college.food.entity.ArticleNews">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="t_article_contents" jdbcType="LONGVARCHAR" property="tArticleContents" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, t_article_title, t_article_keywords, t_article_flag, t_article_type, t_announcement_type, 
+    user_id, user_name, crate_time, status, str1, str2
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    t_article_contents
+  </sql>
+  <select id="countByExample" parameterType="com.college.food.entity.ArticleNewsExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from t_article_news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

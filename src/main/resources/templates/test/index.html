@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>测试</title>
+
+    <link th:href="@{/js/ztree/css/zTreeStyle/zTreeStyle.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/js/ztree/css/demo.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/js/ztree/js/jquery-1.4.4.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/ztree/js/jquery.ztree.core.js}" type="text/javascript"></script>
+    <script th:src="@{/js/ztree/js/jquery.ztree.excheck.js}" type="text/javascript"></script>
+    <script th:src="@{/js/ztree/js/jquery.ztree.all.js}" type="text/javascript"></script>
+    <script th:src="@{/js/ztree/js/jquery.ztree.exedit.js}" type="text/javascript"></script>
+    <script th:src="@{/js/ztree/js/jquery.ztree.exhide.js}" type="text/javascript"></script>
+    <!--&lt;!&ndash; END JQUERY UPLOAD PLUGIN &ndash;&gt;-->
+</head>
+<head th:include="test/Frame"></head>
+<body>
+<div>
+    <ul id="ztreeDemo" class="tree"></ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var setting = {};  // zTree 的参数配置，后面详解
+        var zNodes = [   // zTree 的数据属性，此处使用标准json格式
+            {
+                name: "test1", open: true, children: [
+                { name: "test1_1" }, { name: "test1_2" }]
+            },
+            {
+                name: "test2", open: true, children: [
+                { name: "test2_1" }, { name: "test2_2" }]
+            }
+        ];
+        $.fn.zTree.init($("#ztreeDemo"), setting, zNodes)
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/myCommon"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>论坛首页</title>
+</head>
+<style type="text/css" media="screen">
+    .container {
+        padding-right: 25px;
+        padding-left: 25px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    @media (min-width: 768px) {
+        .container {
+            width: 750px;
+        }
+    }
+    @media (min-width: 992px) {
+        .container {
+            width: 970px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .container {
+            width: 1170px;
+        }
+    }
+    .container-fluid {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+</style>
+<style type="text/css">
+    #mydiv{
+        position:absolute;
+        right:10px;
+        top: 0;
+        left: auto;
+    }
+</style>
+<body>
+<div style="background-color:darkgrey;height: 42px">
+    <div id="mydiv" th:if="${session.user}==null">
+        <a href="/login" class="navbar-link"><h4>【点这登陆】</h4></a>
+    </div>
+    <div id="mydiv" th:if="${session.user}!=null">
+        <a href="" target="centre"><img style="width: 65px;height: 42px;border-radius: 40px" class="img-circle" th:src="${session.user.image}"></a>
+        <a href="/user/logout" style="margin-left: 20px;" class="navbar-link">【点这退出】</a>
+    </div>
+</div>
+    <div class="ui divider"></div>
+    <div class="container" style="background-color:ghostwhite">
+        <h1 style="text-align: center">Twitter bootstrap tutorial  </h1>
+        <ul class="nav nav-pills">
+           <li class="active"><a href="#">首页</a></li>
+           <li><a href="#">板块</a></li>
+           <li><a href="#">iOS</a></li>
+           <li><a href="#">VB.Net</a></li>
+           <li><a href="#">Java</a></li>
+           <li><a href="#">PHP</a></li>
+        </ul>
+        <div id="content" class="ui grid">
+            <div class="ten wide column">
+                <div class="ui comments">
+                    <h6 class="ui divider"></h6>
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="images/logo.gif" style="height: 60px;width: 100px">
+                        </a>
+                        <div class="content">
+                            <a class="author">Matt</a>
+                            <div class="metadata">
+                                <span class="date">今天下午 5:42</span>
+                            </div>
+                            <div class="text">太赞了！ </div>
+                            <div class="actions">
+                                <a class="reply">Reply</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="ui reply form">
+                        <div class="field">
+                            <textarea></textarea>
+                        </div>
+                        <div class="ui blue labeled submit icon button"><i class="icon edit"></i> Add Reply </div>
+                    </form>
+                </div>
+            </div>
+            <div class="six wide column">
+                <h2>Sidebar</h2>
+                <ul class="nav nav-tabs nav-stacked">
+                    <li><a href='#'>Another Link 1</a></li>
+                    <li><a href='#'>Another Link 2</a></li>
+                    <li><a href='#'>Another Link 3</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+        </div>
+    </div>
+
+
+</body>
+</html>

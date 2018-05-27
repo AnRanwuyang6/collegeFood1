@@ -1,0 +1,86 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="add">
+    <!-- add modal -->
+    <div class="ui modal" id="addModal" style="margin-top: -400px;width: 500px;height: 550px">
+        <i class="close icon"></i>
+        <div class="header">
+            添加活动
+        </div>
+        <form class="ui warning form" style="margin:5% 10% 5% 10%" id="addDynamicForm">
+            <div class="two fields">
+                <div class="required field">
+                    <label style="font-size: small">活动名称</label>
+                    <input placeholder="活动名称" type="text" name="dynamicName" id="add_menuName">
+                </div>
+                <div class="field">
+                    <label style="font-size: small">来源渠道</label>
+                    <select class="ui search selection dropdown" name="channel" id="add_channelSelect">
+                        <option value="">请选择</option>
+                        <div th:each="channel,iterStat:${channelList}">
+                            <option th:text="${channel.appChannel.cName}" th:value="${channel.appChannel.cCode}"></option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+
+            <div class="two fields">
+                <div class="required field">
+                    <label style="font-size: small">开始时间</label>
+                    <div class="field">
+                        <div class="input-group date form_datetime">
+                            <input id="add_BeginTime" name="dynmicBeginTime" type="text" size="16" readonly class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn default date-set" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="required field">
+                    <label style="font-size: small">结束时间</label>
+                    <div class="field">
+                        <div class="input-group date form_datetime">
+                            <input id="add_EndTime" name="dynamicEndTime" type="text" size="16" readonly class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn default date-set" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+               <span class="btn green fileinput-button">
+               <i class="fa fa-plus"></i>
+               <span> 选择文件 </span>
+               <input id="fileuploadAdd" type="file" name="file"></span>
+               <div class="ui indicating progress" id="processAdd">
+                   <div class="bar">
+                       <div class="progress"></div>
+                   </div>
+               </div>
+           </div>
+           <div class="required field">
+               <label>文件路径</label>
+               <input placeholder="文件路径" type="text" name="dynamicImage" id="dynamicImageAdd" readonly>
+           </div>
+           <div class="required field">
+               <label style="font-size: small">外链地址</label>
+               <input placeholder="外链地址" type="text" name="dynamicUrl" id="dynamicUrlAdd">
+           </div>
+           <div class="field">
+               <label>活动简介</label>
+               <textarea rows="2" style="resize: none" name="dynamicIntro" id="Add"></textarea>
+           </div>
+        </form>
+        <div class="actions">
+            <div class="ui primary button" id="addSubmit">提交</div>
+            <div class="ui button" onclick="$('#addModal').modal('hide')">取消</div>
+        </div>
+    </div>
+</div>
+
+
+

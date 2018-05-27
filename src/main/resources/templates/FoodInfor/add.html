@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="add">
+    <!-- add modal -->
+    <div class="ui modal" id="addModal" style="margin-top: -400px;width: 400px;height: 620px">
+        <i class="close icon"></i>
+        <div class="header">
+            添加原材料
+        </div>
+        <form class="ui warning form" style="margin:5% 10% 5% 10%" id="addUserForm">
+            <input type="hidden" name="foodTypeId" id="typeId" th:value="${typeId}">
+            <input type="hidden" name="foodTypeName" id="typeName" th:value="${typeName}">
+            <input type="hidden" name="str1" id="flag" th:value="${flag}">
+            <div class="required field">
+                <label style="font-size: small">食物名</label>
+                <input placeholder="食物名" type="text" name="foodName" id="add_foodName">
+            </div>
+            <div class="required field">
+                <label style="font-size: small">食物价格</label>
+                <input placeholder="食物价格" type="text" name="foodPrice" id="add_foodPrice">
+            </div>
+            <div class="field">
+                <label style="font-size: small">产地</label>
+                <input placeholder="产地" type="text" name="str2" id="add_str2">
+            </div>
+            <div class="field">
+                <label style="font-size: small">供应商</label>
+                <input placeholder="供应商" type="text" name="foodDescribe" id="add_foodDescribe">
+            </div>
+            <div>
+               <span class="btn green fileinput-button">
+               <i class="fa fa-plus"></i>
+               <span> 上传图片 </span>
+               <input id="fileuploadAdd" type="file" name="file"></span>
+                <div class="ui indicating progress" id="processAdd">
+                    <div class="bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="required field">
+                <label>图片路径</label>
+                <input placeholder="文件路径" type="text" name="foodUrl" id="add_foodUrl" readonly>
+            </div>
+            <div>
+                <img class="img-thumbnail" src="/img/image.png" style="width: 100px" height="80px" id="myimg">
+            </div>
+        </form>
+        <div class="actions">
+            <div class="ui primary button" id="addSubmit">提交</div>
+            <div class="ui button" onclick="$('#addModal').modal('hide')">取消</div>
+        </div>
+    </div>
+</div>
+
+
+

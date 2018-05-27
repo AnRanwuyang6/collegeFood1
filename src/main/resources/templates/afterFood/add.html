@@ -1,0 +1,44 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="add">
+    <!-- add modal -->
+    <div class="ui small modal" id="addModalForm" style="margin-top: -400px;height: 350px">
+        <i class="close icon"></i>
+        <div class="header">
+            添加类别
+        </div>
+        <form class="ui warning form" style="margin:5% 10% 5% 10%" id="addForm">
+            <div class="two fields">
+                <div class="required field">
+                    <label style="font-size: small">类别名称</label>
+                    <input placeholder="类别名称" type="text" name="typeName" id="add_typeName">
+                </div>
+                <div class="field">
+                    <label style="font-size: small">所属类别</label>
+                    <select class="ui search selection dropdown" name="str1" id="add_str1">
+                        <option value="">请选择</option>
+                        <option value="1">粮油类</option>
+                        <option value="2">蔬菜水果</option>
+                        <option value="3">熟食</option>
+                        <option value="4">肉类</option>
+                        <option value="5">禽蛋类</option>
+                        <option value="6">水产类</option>
+                        <option value="7">速冻食品</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label>备注</label>
+                <textarea rows="2" style="resize: none" name="remark" id="add_remark"></textarea>
+            </div>
+        </form>
+        <div class="actions">
+            <div class="ui primary button" id="addSubmit">提交</div>
+            <div class="ui button" onclick="$('#addModalForm').modal('hide')">取消</div>
+        </div>
+    </div>
+</div>
+
+
+

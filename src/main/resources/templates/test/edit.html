@@ -1,0 +1,102 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="edit">
+    <!-- edit modal -->
+    <div class="ui modal" id="edit" style="margin-top: -400px;width: 500px;height: 550px">
+        <i class="close icon"></i>
+        <div class="header">
+            编辑活动
+        </div>
+        <form class="ui warning form" style="margin:5% 10% 5% 10%" id="editDynamicForm">
+            <input type="hidden" name="id" id="idEdit">
+            <div class="two fields">
+                <div class="required field">
+                    <label style="font-size: small">活动名称</label>
+                    <input placeholder="活动名称" type="text" name="dynamicName" id="edit_menuName">
+                </div>
+                <div class="field">
+                    <label style="font-size: small">来源渠道</label>
+                    <select class="ui search selection dropdown" name="channel" id="edit_channelSelect">
+                        <option value="">请选择</option>
+                        <div th:each="channel,iterStat:${channelList}">
+                            <option th:text="${channel.appChannel.cName}" th:value="${channel.appChannel.cCode}"></option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+
+            <div class="two fields">
+                <div class="required field">
+                    <label style="font-size: small">开始时间</label>
+                    <div class="field">
+                        <div class="input-group date form_datetime">
+                            <input id="edit_BeginTime" name="dynmicBeginTime" type="text" size="16" readonly class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn default date-set" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="required field">
+                    <label style="font-size: small">结束时间</label>
+                    <div class="field">
+                        <div class="input-group date form_datetime">
+                            <input id="edit_EndTime" name="dynamicEndTime" type="text" size="16" readonly class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn default date-set" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="required field">
+                    <label style="font-size: small">活动状态</label>
+                    <select class="ui search selection dropdown" name="status" id="edit_statusSelect">
+                        <option value="1">未开始</option>
+                        <option value="2">进行中</option>
+                        <option value="3">已结束</option>
+                    </select>
+                </div>
+                <div class="required field">
+                    <label style="font-size: small">外链地址</label>
+                    <input placeholder="外链地址" type="text" name="dynamicUrl" id="edit_dynamicUrl">
+                </div>
+            </div>
+
+            <div>
+               <span class="btn green fileinput-button">
+               <i class="fa fa-plus"></i>
+               <span> 选择文件 </span>
+               <input id="fileuploadEdit" type="file" name="file"></span>
+                <div class="ui indicating progress" id="processEdit">
+                    <div class="bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="required field">
+                <label>文件路径</label>
+                <input placeholder="文件路径" type="text" name="dynamicImage" id="edit_dynamicImage" readonly>
+            </div>
+            <!--<div class="required field">
+                <label style="font-size: small">外链地址</label>
+                <input placeholder="外链地址" type="text" name="dynamicUrl" id="edit_dynamicUrl">
+            </div>-->
+            <div class="field">
+                <label>活动简介</label>
+                <textarea rows="2" style="resize: none" name="dynamicIntro" id="edit_dynamicIntro"></textarea>
+            </div>
+        </form>
+        <div class="actions">
+            <div class="ui primary button" id="editSubmit">提交</div>
+            <div class="ui button" id="editCancel">取消</div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,47 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="add">
+    <!-- add modal -->
+    <div class="ui small modal" id="addModalForm" style="margin-top: -400px;height: 450px">
+        <i class="close icon"></i>
+        <div class="header">
+            添加板块
+        </div>
+        <form class="ui warning form" style="margin:5% 10% 5% 10%" id="addForm">
+            <div class="two fields">
+                <div class="required field">
+                    <label style="font-size: small">板块名称</label>
+                    <input placeholder="板块名称" type="text" name="topicName" id="add_topicName">
+                </div>
+                <div class="field">
+                </div>
+            </div>
+            <div>
+               <span class="btn green fileinput-button">
+               <i class="fa fa-plus"></i>
+               <span> 上传图片 </span>
+               <input id="fileuploadAdd" type="file" name="file"></span>
+                <div class="ui indicating progress" id="processAdd">
+                    <div class="bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="required field">
+                <label>图片路径</label>
+                <input placeholder="文件路径" type="text" name="topicImg" id="add_topicImg" readonly>
+            </div>
+            <div class="field">
+                <label>备注</label>
+                <textarea rows="2" style="resize: none" name="topicDescribe" id="add_topicDescribe"></textarea>
+            </div>
+        </form>
+        <div class="actions">
+            <div class="ui primary button" id="addSubmit">提交</div>
+            <div class="ui button" onclick="$('#addModalForm').modal('hide')">取消</div>
+        </div>
+    </div>
+</div>
+
+
+
