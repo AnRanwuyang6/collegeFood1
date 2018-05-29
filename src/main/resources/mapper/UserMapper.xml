@@ -14,7 +14,7 @@
     <result column="image" jdbcType="VARCHAR" property="image" />
     <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="str1" jdbcType="INTEGER" property="str1" />
+    <result column="str1" jdbcType="VARCHAR" property="str1" />
     <result column="str2" jdbcType="VARCHAR" property="str2" />
     <result column="str3" jdbcType="VARCHAR" property="str3" />
   </resultMap>

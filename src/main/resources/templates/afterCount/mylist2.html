@@ -1,0 +1,78 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">原材料管理</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>统计管理</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+           <!-- <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"
+                 data-placement="bottom" data-original-title="Change dashboard date range">
+                <i class=""> 今天是星期一</i>&nbsp;
+                &nbsp;
+                <i class="">2017-01-02</i>
+            </div>-->
+            <i class="" id="day"> </i>&nbsp;
+            &nbsp;
+            <i class="" id="data"></i>
+        </div>
+    </div>
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="row">
+                <div class="two wide column"></div>
+                <div class="twelve  wide column"  style=" width: 80%">
+
+
+                    <!-- 从这起飞  -->
+
+                    <div class="sizer content_header">
+
+                        <div id="main" style="width: 700px;height: 450px;"></div>
+
+                    </div>
+                    <!-- 这里降落 -->
+
+                </div>
+                <div class="two wide column"></div>
+            </div>
+        </div>
+    </div>
+   <!-- <div th:include="test/edit :: edit"></div>-->
+    <script th:src="@{/js/echarts/echarts.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function(){
+            $.post("/foodInfor/queryCount",function (data) {
+                alert(JSON.stringify(data));
+            });
+
+            var myChart = echarts.init(document.getElementById("main"));
+
+
+            option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar'
+                }]
+            };
+            myChart.setOption(option);
+
+
+        });
+    </script>
+</div>
+</html>

@@ -30,7 +30,7 @@ public class LoginController {
                 request.getSession().setAttribute("user",user);
                 //说明存在用户
                 //用户角色
-                msg=user.getStr3();
+                msg=user.getStr1();
             }else{
                 msg="用户不存在";
             }

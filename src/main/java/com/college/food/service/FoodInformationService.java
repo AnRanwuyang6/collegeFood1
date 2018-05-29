@@ -9,7 +9,7 @@ import com.github.pagehelper.PageInfo;
  */
 public interface FoodInformationService {
     //列表
-    PageInfo<FoodInformation> listAjax(BaseVo vo,String foodStatus,String typeId);
+    PageInfo<FoodInformation> listAjax(BaseVo vo,String foodStatus,String typeId,String UserId);
     //物品添加
     void insert(FoodInformation foodInformation,String userId);
     //

@@ -725,52 +725,62 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andStr1EqualTo(Integer value) {
+        public Criteria andStr1EqualTo(String value) {
             addCriterion("str1 =", value, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1NotEqualTo(Integer value) {
+        public Criteria andStr1NotEqualTo(String value) {
             addCriterion("str1 <>", value, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1GreaterThan(Integer value) {
+        public Criteria andStr1GreaterThan(String value) {
             addCriterion("str1 >", value, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1GreaterThanOrEqualTo(Integer value) {
+        public Criteria andStr1GreaterThanOrEqualTo(String value) {
             addCriterion("str1 >=", value, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1LessThan(Integer value) {
+        public Criteria andStr1LessThan(String value) {
             addCriterion("str1 <", value, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1LessThanOrEqualTo(Integer value) {
+        public Criteria andStr1LessThanOrEqualTo(String value) {
             addCriterion("str1 <=", value, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1In(List<Integer> values) {
+        public Criteria andStr1Like(String value) {
+            addCriterion("str1 like", value, "str1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStr1NotLike(String value) {
+            addCriterion("str1 not like", value, "str1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStr1In(List<String> values) {
             addCriterion("str1 in", values, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1NotIn(List<Integer> values) {
+        public Criteria andStr1NotIn(List<String> values) {
             addCriterion("str1 not in", values, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1Between(Integer value1, Integer value2) {
+        public Criteria andStr1Between(String value1, String value2) {
             addCriterion("str1 between", value1, value2, "str1");
             return (Criteria) this;
         }
 
-        public Criteria andStr1NotBetween(Integer value1, Integer value2) {
+        public Criteria andStr1NotBetween(String value1, String value2) {
             addCriterion("str1 not between", value1, value2, "str1");
             return (Criteria) this;
         }

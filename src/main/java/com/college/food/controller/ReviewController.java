@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -100,5 +101,33 @@ public class ReviewController {
         }
         return result;
 
+    }
+    @RequestMapping("/pass")
+    @ResponseBody
+    public AjaxResult pass(String userId,String id){
+        AjaxResult result=new AjaxResult();
+        try {
+            reviewService.pass(userId,id);
+            result.setCode(AjaxResult.RESULT_CODE_0000);
+            result.setMessage("成功");
+        }catch (Exception e){
+            result.setCode(AjaxResult.RESULT_CODE_0001);
+            result.setMessage(e.getMessage());
+        }
+        return  result;
+    }
+    @RequestMapping("/stop")
+    @ResponseBody
+    public AjaxResult stop(String userId,String id){
+        AjaxResult result=new AjaxResult();
+        try {
+            reviewService.stop(userId,id);
+            result.setCode(AjaxResult.RESULT_CODE_0000);
+            result.setMessage("成功");
+        }catch (Exception e){
+            result.setCode(AjaxResult.RESULT_CODE_0001);
+            result.setMessage(e.getMessage());
+        }
+        return  result;
     }
 }

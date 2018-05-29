@@ -58,7 +58,7 @@
                     <!--</a>-->
                 <!--</li>-->
 
-                <li class="nav-item start user_00" th:if="${#strings.contains(session.pre,'3')}" sec:authorize="hasRole('ROLE_IMG')">
+                <li class="nav-item start user_00" th:if="${#strings.contains(session.user.str1,'1')}" sec:authorize="hasRole('ROLE_IMG')">
                     <a href="javascript:" class="nav-link nav-toggle">
                         <i class="fa fa-user"></i>
                         <span class="title">用户中心</span>
@@ -91,7 +91,7 @@
                         <!--</li>-->
                     </ul>
                 </li>
-                <li class="nav-item start comment_00" sec:authorize="hasRole('ROLE_REVIEW_CENTER')">
+                <li class="nav-item start comment_00" th:if="${#strings.contains(session.user.str1,'2')}" sec:authorize="hasRole('ROLE_REVIEW_CENTER')">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="fa fa-comment"></i>
                         <span class="title">文章管理</span>
@@ -104,20 +104,36 @@
                                 <span class="title">新闻管理</span>
                             </a>
                         </li>
-                        <li class="nav-item start comment_02" sec:authorize="hasRole('ROLE_REVIEW_CENTER_PARAMETER_MANAGE')">
-                            <a th:href="@{/params/html}" class="nav-link">
-                                <i class="fa fa-chevron-right"></i>
-                                <span class="title">公告管理</span>
-                            </a>
-                        </li>
                         <li class="nav-item start comment_03" sec:authorize="hasRole('ROLE_REVIEW_CENTER_REVIEW_MANAGE')">
                             <a th:href="@{/afterNews/toAdd}" class="nav-link">
                                 <i class="fa fa-chevron-right"></i>
                                 <span class="title">新闻添加</span>
                             </a>
                         </li>
-                        <li class="nav-item start comment_04" sec:authorize="hasRole('ROLE_REVIEW_CENTER_REVIEW_MANAGE')">
-                            <a th:href="@{/afterNews/html}" class="nav-link">
+                        <!--<li class="nav-item start comment_04" sec:authorize="hasRole('ROLE_REVIEW_CENTER_WORD_MANAGE')">-->
+                        <!--<a href="javascript:;" class="nav-link">-->
+                        <!--<i class="fa fa-chevron-right"></i>-->
+                        <!--<span class="title">敏感词管理</span>-->
+                        <!--</a>-->
+                        <!--</li>-->
+                    </ul>
+                </li>
+                <li class="nav-item start ann_00" th:if="${#strings.contains(session.user.str1,'3')}" sec:authorize="hasRole('ROLE_REVIEW_CENTER')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-comment"></i>
+                        <span class="title">公告管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+
+                        <li class="nav-item start ann_01" sec:authorize="hasRole('ROLE_REVIEW_CENTER_PARAMETER_MANAGE')">
+                            <a th:href="@{/afterNews/annhtml}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">公告管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start ann_00" sec:authorize="hasRole('ROLE_REVIEW_CENTER_REVIEW_MANAGE')">
+                            <a th:href="@{/afterNews/anntoAdd}" class="nav-link">
                                 <i class="fa fa-chevron-right"></i>
                                 <span class="title">公告添加</span>
                             </a>
@@ -130,8 +146,7 @@
                         <!--</li>-->
                     </ul>
                 </li>
-
-                <li class="nav-item start operate_00" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
+                <li class="nav-item start operate_00" th:if="${#strings.contains(session.user.str1,'4')}" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="fa fa-th-list"></i>
                         <span class="title">物品管理</span>
@@ -146,7 +161,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item start review_00" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
+                <li class="nav-item start review_00" th:if="${#strings.contains(session.user.str1,'5')}" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="fa fa-th-list"></i>
                         <span class="title">申请管理</span>
@@ -167,7 +182,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item start sh_00" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
+                <li class="nav-item start sh_00" th:if="${#strings.contains(session.user.str1,'6')}" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="fa fa-th-list"></i>
                         <span class="title">审核管理</span>
@@ -182,7 +197,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item start zb_00" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
+                <li class="nav-item start zb_00" th:if="${#strings.contains(session.user.str1,'7')}" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="fa fa-user"></i>
                         <span class="title">招标管理</span>
@@ -190,9 +205,24 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item start zb_01" sec:authorize="hasRole('ROLE_OPERATION_MANAGE_MENU_MANAGE')">
-                            <a th:href="@{/Review/h}" class="nav-link">
+                            <a th:href="@{/tender/myhtml}" class="nav-link">
                                 <i class="fa fa-chevron-right"></i>
-                                <span class="title">招标列表</span>
+                                <span class="title">我的招标</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item start tb_00" th:if="${#strings.contains(session.user.str1,'8')}" sec:authorize="hasRole('ROLE_OPERATION_MANAGE')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-user"></i>
+                        <span class="title">招标公示</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start tb_01" sec:authorize="hasRole('ROLE_OPERATION_MANAGE_MENU_MANAGE')">
+                            <a th:href="@{/tender/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">投标</span>
                             </a>
                         </li>
                     </ul>
@@ -227,7 +257,7 @@
                     <!--</ul>-->
                 <!--</li>-->
 
-                <li class="nav-item start forumTopic_00" sec:authorize="hasRole('ROLE_REVIEW_CENTER')">
+                <li class="nav-item start forumTopic_00" th:if="${#strings.contains(session.user.str1,'9')}" sec:authorize="hasRole('ROLE_REVIEW_CENTER')">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="fa fa-comment"></i>
                         <span class="title">论坛管理</span>
@@ -241,9 +271,15 @@
                             </a>
                         </li>
                         <li class="nav-item start forumTopic_02" sec:authorize="hasRole('ROLE_REVIEW_CENTER_PARAMETER_MANAGE')">
-                            <a th:href="@{/params/html}" class="nav-link">
+                            <a th:href="@{/post/html}" class="nav-link">
                                 <i class="fa fa-chevron-right"></i>
                                 <span class="title">帖子管理</span>
+                            </a>
+                        </li>
+                        <li class="nav-item start forumTopic_03" sec:authorize="hasRole('ROLE_REVIEW_CENTER_PARAMETER_MANAGE')">
+                            <a th:href="@{/post/addHtml}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">发帖</span>
                             </a>
                         </li>
                         <!--<li class="nav-item start comment_04" sec:authorize="hasRole('ROLE_REVIEW_CENTER_WORD_MANAGE')">-->
@@ -251,6 +287,48 @@
                                 <!--<i class="fa fa-chevron-right"></i>-->
                                 <!--<span class="title">敏感词管理</span>-->
                             <!--</a>-->
+                        <!--</li>-->
+                    </ul>
+                </li>
+                <li class="nav-item start postComment_00" th:if="${#strings.contains(session.user.str1,'a')}" sec:authorize="hasRole('ROLE_REVIEW_CENTER')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-comment"></i>
+                        <span class="title">评论中心</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start postComment_01" th:if="${#strings.contains(session.user.str1,'b')}" sec:authorize="hasRole('ROLE_REVIEW_CENTER_REVIEW_MANAGE')">
+                            <a th:href="@{/comment/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">评论管理</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item start forumTopic1_00" sec:authorize="hasRole('ROLE_REVIEW_CENTER')">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-comment"></i>
+                        <span class="title">统计管理</span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item start forumTopic1_01" sec:authorize="hasRole('ROLE_REVIEW_CENTER_REVIEW_MANAGE')">
+                            <a th:href="@{/afterCount/html}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">论坛发帖种类</span>
+                            </a>
+                        </li>
+                       <!-- <li class="nav-item start forumTopic_02" sec:authorize="hasRole('ROLE_REVIEW_CENTER_PARAMETER_MANAGE')">
+                            <a th:href="@{/afterCount/count}" class="nav-link">
+                                <i class="fa fa-chevron-right"></i>
+                                <span class="title">统计帖子数量</span>
+                            </a>
+                        </li>-->
+                        <!--<li class="nav-item start comment_04" sec:authorize="hasRole('ROLE_REVIEW_CENTER_WORD_MANAGE')">-->
+                        <!--<a href="javascript:;" class="nav-link">-->
+                        <!--<i class="fa fa-chevron-right"></i>-->
+                        <!--<span class="title">敏感词管理</span>-->
+                        <!--</a>-->
                         <!--</li>-->
                     </ul>
                 </li>
@@ -984,21 +1062,21 @@
                     </ul>
                 </li>-->
 
-                <li class="nav-item start aboutMe_00" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_ABOUT')">
+       <!--         <li class="nav-item start aboutMe_00" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_ABOUT')">
                     <a th:href="@{/aboutUs/index}" class="nav-link nav-toggle">
                         <i class="fa fa-phone"></i>
                         <span class="title">关于我们</span>
                         <span class="arrow open"></span>
                     </a>
-                    <!--<ul class="sub-menu">-->
-                        <!--<li class="nav-item start aboutMe_01" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_ABOUT_US')">-->
-                            <!--<a th:href="@{/aboutUs/index}" class="nav-link">-->
-                                <!--<i class="fa fa-chevron-right"></i>-->
-                                <!--<span class="title">那些你必须知道的事儿</span>-->
-                            <!--</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                </li>
+                    &lt;!&ndash;<ul class="sub-menu">&ndash;&gt;
+                        &lt;!&ndash;<li class="nav-item start aboutMe_01" sec:authorize="hasRole('ROLE_SYSTEM_SETUP_ABOUT_US')">&ndash;&gt;
+                            &lt;!&ndash;<a th:href="@{/aboutUs/index}" class="nav-link">&ndash;&gt;
+                                &lt;!&ndash;<i class="fa fa-chevron-right"></i>&ndash;&gt;
+                                &lt;!&ndash;<span class="title">那些你必须知道的事儿</span>&ndash;&gt;
+                            &lt;!&ndash;</a>&ndash;&gt;
+                        &lt;!&ndash;</li>&ndash;&gt;
+                    &lt;!&ndash;</ul>&ndash;&gt;
+                </li>-->
                 <!-- END -->
             </ul>
         </div>

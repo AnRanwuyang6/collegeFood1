@@ -36,6 +36,13 @@ public class UserServiceImpl implements UserService {
         user.setId(UUIDUtils.generateUUID());
         user.setCreatedate(new Date());
         user.setPassword(MD5Utils.encode(user.getPassword()));
+        if(user.getStr3().equals("1")){
+            user.setStr1("5");
+        }else if(user.getStr3().equals("2")){
+            user.setStr1("5");
+        }else{
+            user.setStr1("2346789a");
+        }
         userMapper.insert(user);
     }
 

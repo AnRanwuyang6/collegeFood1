@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="add">
+    <!-- add modal -->
+    <div class="ui modal" id="addModal" style="margin-top: -400px;width: 400px;height: 620px">
+        <i class="close icon"></i>
+        <div class="header">
+            添加招标
+        </div>
+        <form class="ui warning form" style="margin:5% 10% 5% 10%" id="addUserForm">
+            <div class="required field">
+                <label style="font-size: small">标题</label>
+                <input placeholder="标题" type="text" name="title" id="add_title">
+            </div>
+            <div class="required field">
+                <label>招标简述：</label>
+                <textarea  placeholder="不超过200个字符" style="resize: none" name="content" id="add_content" maxlength="200">
+                </textarea>
+            </div>
+
+            <div>
+               <span class="btn green fileinput-button">
+               <i class="fa fa-plus"></i>
+               <span> 上传文件 </span>
+               <input id="fileuploadAdd" type="file" name="file"></span>
+                <div class="ui indicating progress" id="processAdd">
+                    <div class="bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="required field">
+                <label>文件路径</label>
+                <input placeholder="文件路径" type="text" name="fileRul" id="add_fileRul" readonly>
+            </div>
+            <div class="required field">
+                <label>文件名称</label>
+                <input placeholder="文件名称" type="text" name="str2" id="add_str2" readonly>
+            </div>
+        </form>
+        <div class="actions">
+            <div class="ui primary button" id="addSubmit">提交</div>
+            <div class="ui button" onclick="$('#addModal').modal('hide')">取消</div>
+        </div>
+    </div>
+</div>
+
+
+

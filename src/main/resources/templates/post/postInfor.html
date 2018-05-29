@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="edit">
+    <!-- add modal -->
+    <div class="ui modal" id="editModal" style="margin-top: -400px;width: 400px;">
+        <i class="close icon"></i>
+        <div class="header">
+            帖子内容
+        </div>
+        <form class="ui warning form" style="margin:5% 10% 5% 10%" id="editForm">
+         <div id="mycontent">
+
+         </div>
+        </form>
+        <div class="actions">
+            <div class="ui button" onclick="$('#editModal').modal('hide')">关闭</div>
+        </div>
+    </div>
+</div>
+
+
+

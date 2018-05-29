@@ -45,7 +45,7 @@ public class User {
 
     private String email;
 
-    private Integer str1;
+    private String str1;
 
     private String str2;
 
@@ -208,14 +208,14 @@ public class User {
     /**
      * @return str1
      */
-    public Integer getStr1() {
+    public String getStr1() {
         return str1;
     }
 
     /**
      * @param str1
      */
-    public void setStr1(Integer str1) {
+    public void setStr1(String str1) {
         this.str1 = str1;
     }
 

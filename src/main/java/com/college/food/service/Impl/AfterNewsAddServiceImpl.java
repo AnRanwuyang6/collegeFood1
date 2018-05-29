@@ -2,6 +2,7 @@ package com.college.food.service.Impl;
 
 
 import com.college.food.common.utils.UUIDUtils;
+import com.college.food.common.vo.BaseVo;
 import com.college.food.dao.mybatis.ArticleNewsMapper;
 import com.college.food.entity.ArticleNews;
 import com.college.food.entity.ArticleNewsExample;
@@ -48,6 +49,30 @@ public class AfterNewsAddServiceImpl implements AfterNewsAddService {
 
         articleNewsMapper.insert(articleNews);
 
+    }
+
+    @Override
+    public PageInfo<ArticleNews> listAjaxAnn(BaseVo vo) {
+        ArticleNewsExample example=new ArticleNewsExample();
+        example.createCriteria().andTArticleFlagEqualTo("1");
+        PageHelper.startPage(vo.getPage(),vo.getSize());
+        List<ArticleNews> articleNewsList=articleNewsMapper.selectByExample(example);
+        PageInfo<ArticleNews> pageInfo=new PageInfo<>(articleNewsList);
+        return pageInfo;
+    }
+
+    @Override
+    public void insertAnn(ArticleNews articleNews) {
+        articleNews.setId(UUIDUtils.generateUUID());
+        //flag 0:新闻 1：公告
+        articleNews.settArticleFlag("1");
+        articleNews.setCrateTime(new Date());
+        //默认不推荐
+        articleNews.setStr1("0");
+        //默认下线
+        articleNews.setStatus("0");
+
+        articleNewsMapper.insert(articleNews);
     }
 
     @Override

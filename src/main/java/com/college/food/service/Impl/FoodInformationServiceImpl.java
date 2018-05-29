@@ -26,12 +26,12 @@ public class FoodInformationServiceImpl implements FoodInformationService{
     @Autowired
     private UserFoodRMapper userFoodRMapper;
     @Override
-    public PageInfo<FoodInformation> listAjax(BaseVo vo,String foodStatus,String typeId) {
+    public PageInfo<FoodInformation> listAjax(BaseVo vo,String foodStatus,String typeId,String UserId) {
         FoodInformationExample example=new FoodInformationExample();
         if(!foodStatus.equals("")){
-            example.createCriteria().andStatusEqualTo(foodStatus).andFoodTypeIdEqualTo(typeId);
+            example.createCriteria().andStatusEqualTo(foodStatus).andFoodTypeIdEqualTo(typeId).andStr3EqualTo(UserId);
         }else{
-            example.createCriteria().andFoodTypeIdEqualTo(typeId);
+            example.createCriteria().andFoodTypeIdEqualTo(typeId).andStr3EqualTo(UserId);
         }
         PageHelper.startPage(vo.getPage(),vo.getSize());
         List<FoodInformation> foodInformationList=foodInformationMapper.selectByExample(example);
@@ -45,6 +45,7 @@ public class FoodInformationServiceImpl implements FoodInformationService{
      foodInformation.setId(foodid);
      foodInformation.setCreatTime(new Date());
      foodInformation.setStatus("0");
+     foodInformation.setStr3(id);
      foodInformationMapper.insert(foodInformation);
      UserFoodR userFoodR=new UserFoodR();
      userFoodR.setId(UUIDUtils.generateUUID());

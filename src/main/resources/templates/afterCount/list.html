@@ -1,0 +1,141 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">统计管理</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>统计原材料种类</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+           <!-- <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"
+                 data-placement="bottom" data-original-title="Change dashboard date range">
+                <i class=""> 今天是星期一</i>&nbsp;
+                &nbsp;
+                <i class="">2017-01-02</i>
+            </div>-->
+            <i class="" id="day"> </i>&nbsp;
+            &nbsp;
+            <i class="" id="data"></i>
+        </div>
+    </div>
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="row">
+                <div class="two wide column"></div>
+                <div class="twelve  wide column"  style=" width: 80%">
+
+
+                    <!-- 从这起飞  -->
+
+                   <!-- <div class="sizer content_header" id="main">
+
+
+                    </div>-->
+                    <!-- 这里降落 -->
+
+                </div>
+                <div class="two wide column"></div>
+            </div>
+        </div>
+    </div>
+   <!-- <div th:include="forumTopic/add :: add"></div>-->
+   <!-- <div th:include="test/edit :: edit"></div>-->
+   <!-- <script th:src="@{/myjs/forumTopic/list.js}"></script>-->
+    <script th:src="@{/js/echarts/echarts.js}"></script>
+    <script th:src="@{/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js}" type="text/javascript"></script>
+</div>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+
+
+    // 指定图表的配置项和数据
+    var option = {
+        backgroundColor: '#2c343c',
+        title: {
+            text: '蔬菜品种种类统计',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+
+        //显示提示框
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        //选取映射的数值范围
+        visualMap: {
+            show: false,
+            min: 80,
+            max: 600,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+
+
+        series : [
+            {
+                name:'蔬菜来源',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '50%'],
+                data:[
+                    {value:335, name:'直接访问'},
+                    {value:310, name:'邮件营销'},
+                    {value:274, name:'联盟广告'},
+                    {value:235, name:'视频广告'},
+                    {value:400, name:'搜索引擎'}
+                ].sort(function (a, b) { return a.value - b.value; }),
+                roseType: 'radius',
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        },
+                        smooth: 0.2,
+                        length: 10,
+                        length2: 20
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#c23531',
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
+            }
+        ]
+
+
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+
+
+
+</script>
+</html>

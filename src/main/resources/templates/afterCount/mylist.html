@@ -1,0 +1,206 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">原材料管理</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>统计管理</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+           <!-- <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"
+                 data-placement="bottom" data-original-title="Change dashboard date range">
+                <i class=""> 今天是星期一</i>&nbsp;
+                &nbsp;
+                <i class="">2017-01-02</i>
+            </div>-->
+            <i class="" id="day"> </i>&nbsp;
+            &nbsp;
+            <i class="" id="data"></i>
+        </div>
+    </div>
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="row">
+                <div class="two wide column"></div>
+                <div class="twelve  wide column"  style=" width: 80%">
+
+
+                    <!-- 从这起飞  -->
+
+                    <div class="sizer content_header">
+
+                        <div id="main" style="width: 700px;height: 450px;"></div>
+
+                    </div>
+                    <!-- 这里降落 -->
+
+                </div>
+                <div class="two wide column"></div>
+            </div>
+        </div>
+    </div>
+   <!-- <div th:include="test/edit :: edit"></div>-->
+    <script th:src="@{/js/echarts.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.forumTopic1_00').attr("class", "nav-item start active open");
+
+            $('.forumTopic1_01').attr("class", "nav-item start active open");
+
+            var dataobj =[];
+            $.post("/forumTopic/queryCountByBank",function(dataobj){
+               /*//alert(JSON.stringify(data));
+                var myChart = echarts.init(document.getElementById("main"));
+
+
+                // 指定图表的配置项和数据
+                var option = {
+                    backgroundColor: '#c7edcc',
+                    title: {
+                        text: '蔬菜品种种类统计',
+                        left: 'center',
+                        top: 20,
+                        textStyle: {
+                            color: '#c2090e'
+                        }
+                    },
+
+                    //显示提示框
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    //选取映射的数值范围
+                    visualMap: {
+                        show: false,
+                        min: 80,
+                        max: 600,
+                        inRange: {
+                            colorLightness: [0, 1]
+                        }
+                    },
+
+
+                    series : [
+                        {
+                            name:'蔬菜来源',
+                            type:'pie',
+                            radius : '55%',
+                            //饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
+                            center: ['50%', '50%'],
+                            data:data.sort(function (a, b) { return a.value - b.value; }),
+                            roseType: 'radius',
+                            label: {
+                                normal: {
+                                    textStyle: {
+                                        color: 'rgba(255, 255, 255, 0.3)'
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    lineStyle: {
+                                        color: 'rgba(255, 255, 255, 0.3)'
+                                    },
+                                    smooth: 0.2,
+                                    length: 10,
+                                    length2: 20
+                                }
+                            },
+                            //指定饼图扇形每个扇面的颜色
+                            itemStyle: {
+                                normal: {
+                                    color: '#7c60ff',
+                                    shadowBlur: 200,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            },
+
+                            animationType: 'scale',
+                            animationEasing: 'elasticOut',
+                            animationDelay: function (idx) {
+                                return Math.random() * 200;
+                            }
+                        }
+                    ]
+
+
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+                */
+               //-----------------------------------------------------------------
+
+                var myChart = echarts.init(document.getElementById("main"));
+                var labeldat = new Array();
+                var len=dataobj.length;
+                for(var i=0;  i<len; i++){
+                    labeldat.push(dataobj[i].name);
+
+                }
+
+
+                var option = {
+                    title : {
+                        text: '各版块的评论数',
+                        x:'center'
+                    },
+                    //工具标签页
+                    tooltip : {
+                        trigger: 'item',
+                        //格式化数据方法
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                        data: labeldat
+                    },
+                    series : [
+                        {
+                            name: '数据来源',
+                            type: 'pie',
+                            radius : '55%',
+                            center: ['50%', '60%'],
+                            data:dataobj,
+                            itemStyle: {
+                                normal:{
+                                    label:{
+                                        show:true,
+                                        formatter: '{b} : {c} \n ({d}%)'
+                                    },
+                                    labelLine:{
+                                        show:true
+                                    }
+                                },
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ],
+                    color: ['rgb(254,67,101)','rgb(252,157,154)','rgb(249,205,173)','rgb(200,200,169)','rgb(131,175,155)']
+
+                };
+                myChart.setOption(option);
+
+
+
+
+            });
+
+
+        });
+    </script>
+</div>
+</html>

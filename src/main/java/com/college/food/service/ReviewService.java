@@ -21,4 +21,9 @@ public interface ReviewService {
     //审核
     PageInfo<Review> listAjax(BaseVo vo,Date beginTime,Date endime);
 
+    //通过
+    void pass(String userId,String id);
+    //驳回
+    void stop(String userId,String id);
+
 }

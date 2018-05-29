@@ -3,6 +3,7 @@ package com.college.food.controller;
 import com.college.food.common.ajax.AjaxResult;
 import com.college.food.common.utils.DateUtil;
 import com.college.food.entity.ForumTopic;
+import com.college.food.entity.MyUtil;
 import com.college.food.entity.User;
 import com.college.food.service.ForumTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,4 +75,32 @@ public class ForumTopicController {
       }
       return result;
     }
+    @RequestMapping("/delete/{id}")
+    @ResponseBody
+    public AjaxResult delete(@PathVariable("id") String id){
+        AjaxResult result=new AjaxResult();
+        try {
+            forumTopicService.delete(id);
+            result.setCode(AjaxResult.RESULT_CODE_0000);
+            result.setMessage("成功");
+        }catch (Exception e){
+            result.setCode(AjaxResult.RESULT_CODE_0001);
+            result.setMessage(e.getMessage());
+        }
+        return result;
+    }
+
+
+    //查询各板块的发帖数量
+    @RequestMapping("/queryCountByBank")
+    @ResponseBody
+    public ArrayList<MyUtil> queryCountByBank(){
+        ArrayList<MyUtil> list = new ArrayList<>();
+        list  = forumTopicService.queryCountByBank();
+        System.err.println(list);
+        return list;
+    }
+
+    //查询
+
 }

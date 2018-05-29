@@ -128,5 +128,51 @@ public class FileUploadController {
 
         return result;
     }
+    @RequestMapping("/uploadFile1")
+    @ResponseBody
+    public AjaxResult uploadFile1(HttpServletRequest request, HttpServletResponse response)throws Exception{
+        response.setContentType ("text/html;charset=UTF-8");
+        AjaxResult result = new AjaxResult();
+        try {
+            result.setCode(AjaxResult.RESULT_CODE_0000);
+            //用来检测程序运行时间
+            long startTime = System.currentTimeMillis();
+            //将当前上下文初始化给  CommonsMutipartResolver （多部分解析器）
+            CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+            //检查form中是否有enctype="multipart/form-data"
+
+            if (multipartResolver.isMultipart(request)) {
+                //将request变成多部分request
+                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+                //获取multiRequest 中所有的文件名
+                Iterator iter = multiRequest.getFileNames();
+                //上传路径
+                String path="D:/tomcat6/mytomcat/webapps/myssm/upload/img/";
+                while (iter.hasNext()) {
+                    //一次遍历所有文件
+                    MultipartFile file = multiRequest.getFile(iter.next().toString());
+                    String suffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+                    //上传
+                    String name = new Random().nextInt(90000000) + 10000000 + "";
+                    String oldname=file.getOriginalFilename();
+                    file.transferTo(new File(path+name+suffix));
+                    //回显路径
+                    String url="http://localhost:8080/myssm/upload/img/"+name+suffix;
+                    result.setMessage(oldname);
+                    result.setData(url);
+                    break;
+
+
+                }
+            }
+            long endTime = System.currentTimeMillis();
+            System.out.println("上传耗时：" + String.valueOf(endTime - startTime) + "ms");
+        } catch (Exception e) {
+            result.setCode(AjaxResult.RESULT_CODE_0001);
+            result.setMessage("上传失败！");
+        }
+
+        return result;
+    }
 
 }

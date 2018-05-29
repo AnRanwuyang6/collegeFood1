@@ -1,0 +1,104 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">论坛管理</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>帖子管理</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+           <!-- <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"
+                 data-placement="bottom" data-original-title="Change dashboard date range">
+                <i class=""> 今天是星期一</i>&nbsp;
+                &nbsp;
+                <i class="">2017-01-02</i>
+            </div>-->
+            <i class="" id="day"> </i>&nbsp;
+            &nbsp;
+            <i class="" id="data"></i>
+        </div>
+    </div>
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="row">
+                <div class="one wide column"></div>
+                <div class="fourteen  wide column"  style=" width: 90%">
+
+
+                    <!-- 从这起飞  -->
+
+                    <div class="sizer content_header">
+                        <form class="ui form">
+                            <div class="three fields">
+                                <div class="field">
+                                    <label style="font-size: small">板块</label>
+                                    <select class="ui search selection dropdown" id="topicTypeSelect">
+                                        <div th:each="topicList,iterStat:${forumTopicList}">
+                                            <option th:text="${topicList.topicName}" th:value="${topicList.id}"></option>
+                                        </div>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label style="font-size: small">标题</label>
+                                    <input placeholder="按标题名称查询" type="text"  id="title">
+                                </div>
+                                <div class="field" style="text-align: right">
+                                    <label style="font-size: small">&nbsp;</label>
+                                    <input class="ui button" type="button" value="查询" id="praiseButton"/>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="ui divider"></div>
+                        <div>
+                            <table class="ui four column table" style="table-layout: fixed">
+                                <thead>
+                                <tr>
+                                    <th style="width: 15%">
+                                       帖子标题
+                                    </th>
+                                    <th style="width: 12%">
+                                        发布时间
+                                    </th>
+                                    <th style="width: 10%">
+                                        发布人
+                                    </th>
+                                    <th style="width: 8%">
+                                        回复数
+                                    </th>
+                                    <th style="width: 10%">
+                                        所属板块
+                                    </th>
+                                    <th style="width: 8%">类型</th>
+                                    <th style="width: 7%">状态</th>
+                                    <th style="width: 30%">操作</th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="content">
+
+                                </tbody>
+
+                            </table>
+                            <div id="page" class="ui pagination menu" style="align-items: center">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 这里降落 -->
+
+                </div>
+                <div class="one wide column"></div>
+            </div>
+        </div>
+    </div>
+    <div th:include="post/add :: add"></div>
+    <div th:include="post/postInfor :: edit"></div>
+    <script th:src="@{/myjs/post/list.js}"></script>
+    <script th:src="@{/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js}" type="text/javascript"></script>
+</div>
+</html>

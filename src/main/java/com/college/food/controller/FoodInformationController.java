@@ -32,10 +32,11 @@ public class FoodInformationController {
     }
     @RequestMapping("/listAjax")
     @ResponseBody
-    public AjaxResult listAjax(BaseVo vo,String foodStatus,String typeId){
+    public AjaxResult listAjax(BaseVo vo,String foodStatus,String typeId,HttpServletRequest request){
+        User user=(User)request.getSession().getAttribute("user");
         AjaxResult result=new AjaxResult();
         try {
-            PageInfo<FoodInformation> pageInfo=foodInformationService.listAjax(vo,foodStatus,typeId);
+            PageInfo<FoodInformation> pageInfo=foodInformationService.listAjax(vo,foodStatus,typeId,user.getId());
             for(FoodInformation foodInformation:pageInfo.getList()){
                 foodInformation.setStr3(DateUtil.DataToString_yyyyMMdd(foodInformation.getCreatTime()));
             }
